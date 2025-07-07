@@ -57,13 +57,17 @@ const App = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/download", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url }),
-      });
+      const response = await fetch(
+        "https://video-downloader-backend-hpoh.onrender.com/download",
+        // "http://localhost:3000",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url }),
+        }
+      );
       const data: videoDataType = await response.json();
 
       if (data.formats) {
@@ -82,8 +86,6 @@ const App = () => {
       setLoading(false);
     }
   };
-
-  console.log(formats);
 
   const handleDownload = async (data: formatType) => {
     if (videoData) {
@@ -205,7 +207,7 @@ const App = () => {
                       handleCodec("video&audio");
                     }}
                   >
-                    Vidoe & Audio
+                    Video & Audio
                     {codec === "video&audio" ? (
                       <hr className="border-[1.2px]" />
                     ) : null}
@@ -259,7 +261,6 @@ const App = () => {
                           />
                         ) : (
                           <>
-                            {" "}
                             <p className="absolute bottom-0 right-0 px-2 font-bold">
                               {formatDuration(videoData.duration)}
                             </p>
