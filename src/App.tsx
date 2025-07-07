@@ -54,8 +54,8 @@ const App = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
-
     try {
       const response = await fetch(
         "https://video-downloader-backend-hpoh.onrender.com",
