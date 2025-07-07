@@ -58,7 +58,7 @@ const App = () => {
 
     try {
       const response = await fetch(
-        "https://video-downloader-backend-hpoh.onrender.com/download",
+        "https://video-downloader-backend-hpoh.onrender.com",
         // "http://localhost:3000",
         {
           method: "POST",
